@@ -8,7 +8,7 @@ show: show.kubewarden show.epinio show.fleet ## Show display generated Updatecli
 
 .PHONY: epinio_publish
 epinio_publish: ## Publish Epinio version of the policy
-	./ci/release.bash epinio
+	.ci/release.bash epinio
 
 .PHONY: epinio_show
 epinio_show: ## epinio_show shows generated Updatecli manifest for Epinio documentation website
@@ -22,7 +22,7 @@ epinio_test: ## epinio_test shows a diff of what would be changed by Updatecli o
 
 .PHONY: kubewarden_publish
 kubewarden_publish: ## Publish Kubewarden version of the policy
-	./ci/release.bash kubewarden
+	.ci/release.bash kubewarden
 
 .PHONY: kubewarden_show
 kubewarden_show: ## kubewarden_show shows generated Updatecli manifest for Kubewarden documentation website
@@ -36,7 +36,7 @@ kubewarden_test: ## kubewarden_test shows a diff of what would be changed by Upd
 
 .PHONY: fleet_publish
 fleet_publish: ## Publish Fleet version of the policy
-	./ci/release.bash fleet
+	.ci/release.bash fleet
 
 .PHONY: fleet_show
 fleet_show: ## fleet_show shows generated Updatecli manifest for Fleet documentation website
