@@ -7,9 +7,14 @@ Today each docusaurus website has its own set of duplicated policies which becom
 
 Running `make help` list all common tasks with this repository
 
+## Requirements
+
+* [Updatecli](https://www.updatecli.io/docs/prologue/installation/) version 0.63.0
+* Makefile
+
 ## Release
 
-WIP
+Push a git tag matching the version of the Policy defined by the field "version" in policy/Policy.yaml
 
 ## Contributing
 
