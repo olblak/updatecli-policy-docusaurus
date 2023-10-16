@@ -6,18 +6,25 @@ on:
     tags:
       - "v*"
 
-
-permissions:
-  packages: write
-
 jobs:
-  updatecli:
+  release:
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
     steps:
       - name: "Checkout"
         uses: "actions/checkout@v4"
+
       - name: "Setup Updatecli"
         uses: "updatecli/updatecli-action@v2"
+
+      - name: Login to GitHub Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
       - name: "Run release"
         run: "make publish"
         env:
