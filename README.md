@@ -9,8 +9,37 @@ Running `make help` list all common tasks with this repository
 
 ## Requirements
 
-* [Updatecli](https://www.updatecli.io/docs/prologue/installation/) version 0.63.0
-* Makefile
+* [Updatecli](https://www.updatecli.io/docs/prologue/installation/) [>=0.63.0]
+
+## How To
+
+This policy is designed to work from GitHub action workflows. this means that before running any Updatecli command, we need the two following environment variables set:
+
+* `GITHUB_TOKEN`: Set to a personnal access token
+* `GITHUB_ACTOR`: Set to the username associated with the `GITHUB_TOKEN`
+
+Instruction to retrieve your PAT is documented on [manifest-your-personal-access-tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
+
+
+**Show Update policy description**
+
+```
+updatecli manifest show ghcr.io/olblak/policies/rancher/docusaurus/<project name>:<version>
+```
+
+**Execute Updatecli in dryrun mode**
+
+```
+updatecli diff ghcr.io/olblak/policies/rancher/docusaurus/<project name>:<version>
+```
+
+**Execute Updatecli in apply mode**
+
+Please note that to run the following command, your PAT must have enough permission on the target documentation repository.
+
+```
+updatecli apply ghcr.io/olblak/policies/rancher/docusaurus/<project name>:<version>
+```
 
 ## Release
 
