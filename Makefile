@@ -4,6 +4,9 @@ publish: kubewarden_publish fleet_publish epinio_publish ## Publish docusaurus t
 .PHONY: show
 show: show.kubewarden show.epinio show.fleet ## Show display generated Updatecli manifest for each project
 
+.PHONY: test
+test: epinio_test kubewarden_test fleet_test ## Test all policies by running updatecli diff
+
 ## Epinio related targets
 
 .PHONY: epinio_publish
