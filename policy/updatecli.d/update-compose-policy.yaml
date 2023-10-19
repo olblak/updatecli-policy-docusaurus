@@ -1,0 +1,56 @@
+name: "ci: update docusaurus update policy"
+pipelineid: "policy/docusuraus/versioning"
+
+sources:
+  tag:
+    name: "Get latest docusaurus policy version"
+    kind: "dockerimage"
+    spec:
+      image: 'ghcr.io/olblak/policies/rancher/docusaurus/{{ lower .project }}'
+
+  digest:
+    name: 'Get latest docusaurus policy digest'
+    kind: 'dockerdigest'
+    dependson:
+      - 'tag'
+    spec:
+      image: 'ghcr.io/olblak/policies/rancher/docusaurus/{{ lower .project }}'
+      tag: '{{ source "tag" }}'
+
+targets:
+  compose:
+    name: 'ci: bump docusaurus versioning policy to latest digest based on {{ source "tag" }}'
+    kind: file
+    scmid: default
+    disablesourceinput: true
+    spec:
+      file: update-compose.yaml
+      matchpattern: '(policy: ghcr.io/olblak/policies/rancher/docusaurus/{{ lower .project }}:)(.*)'
+      replacepattern: '${1}{{ source "digest"}}'
+
+actions:
+  default:
+    kind: github/pullrequest
+    scmid: default
+    spec:
+      automerge: true
+      mergemethod: squash
+      labels:
+        - ci
+
+scms:
+  default:
+    kind: github
+    spec:
+      user: '{{ .scm.user }}'
+      email: '{{ .scm.email }}' 
+      # {{ $GitHubRepositoryList := env "GITHUB_REPOSITORY" | split "/"}}
+      owner: '{{ default .scm.owner $GitHubRepositoryList._0 }}' 
+      repository: '{{ default .scm.repository $GitHubRepositoryList._1 }}' 
+      # {{ $GitHubPAT := env "GITHUB_TOKEN"}}
+      token: '{{ default .scm.token $GitHubPAT }}' 
+      # {{ $GitHubUsername := env "GITHUB_ACTOR"}}}
+      username: '{{ default .scm.username $GitHubUsername }}' 
+      # {{ $GitHubBranch := env "GITHUB_REF_NAME"}}}
+      branch: '{{ default .scm.branch $GitHubBranch }}' 
+
