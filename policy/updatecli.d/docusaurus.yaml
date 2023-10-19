@@ -33,6 +33,8 @@ conditions:
     kind: "shell"
     disablesourceinput: true
     spec:
+      environments:
+        - name: "PATH"
       changedif:
         kind: "exitcode"
         spec:
