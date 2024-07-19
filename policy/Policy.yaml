@@ -5,10 +5,12 @@ url: "https://github.com/olblak/updatecli-policy-docusaurus"
 documentation: "https://github.com/olblak/updatecli-policy-docusaurus/README.md"
 source: "https://github.com/olblak/updatecli-policy-docusaurus.git"
 
-version: 0.0.5
+version: 0.1.0
 licenses:
   - "Apache-2.0 license"
 description: |
   Updatecli policy to automate Docusaurus documentation versioning update.
   More information on this feature on: https://docusaurus.io/docs/versioning
+
+changelog: "https://github.com/olblak/updatecli-policy-docusaurus/policy/CHANGELOG.md"
 
