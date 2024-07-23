@@ -1,4 +1,4 @@
-name: Add pullrequest to the Collie project board
+name: Collie: Add pullrequest to GH project
 
 on:
   pull_request:
