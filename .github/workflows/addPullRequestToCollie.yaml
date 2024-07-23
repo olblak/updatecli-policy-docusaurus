@@ -1,4 +1,4 @@
-name: Add pullrequest to the Collie project board
+name: "Team Collie - Add pullrequest to Project Board"
 
 on:
   pull_request:
