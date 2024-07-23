@@ -1,0 +1,19 @@
+name: Add pullrequest to the Collie project board
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - labeled
+
+jobs:
+  add-to-project:
+    name: Add pull request to project
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/add-to-project@v1.0.2
+        if: contains(fromJson('["joncrowther","olblak", "crobby","pmatseykanets", "enrichman", "raulcabello", "andreas-kupries","bigkevmcd","alegrey91"]'), github.actor)
+        with:
+          project-url: https://github.com/orgs/rancher/projects/49
+          github-token: ${{ secrets.ADD_TO_PROJECT_PAT }}
