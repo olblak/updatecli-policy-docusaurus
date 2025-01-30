@@ -24,7 +24,7 @@ targets:
     scmid: default
     disablesourceinput: true
     spec:
-      file: update-compose.yaml
+      file: {{ .composeFile }} 
       matchpattern: '(policy: ghcr.io/olblak/policies/rancher/docusaurus/{{ lower .project }}:)(.*)'
       replacepattern: '${1}{{ source "digest"}}'
 

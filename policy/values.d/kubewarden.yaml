@@ -1,5 +1,6 @@
 project: "Kubewarden"
 repository: "kubewarden/kubewarden-controller"
+composeFile: "updatecli/updatecli-compose.yaml"
 
 scm:
   # GitHub user associated to the commit message
