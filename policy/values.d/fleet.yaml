@@ -1,5 +1,6 @@
 project: "Fleet"
 repository: "rancher/fleet"
+composeFile: "update-compose.yaml"
 
 scm:
   # GitHub user associated to the commit message
